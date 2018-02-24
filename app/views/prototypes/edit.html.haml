@@ -15,7 +15,7 @@
               -if image.object.status == 'main'
                 %img
                 = image.file_field :content, required: true
-                = image.hidden_field :status, value: "main"
+                = image.hidden_field :status, value: "main", id:image.object.id
         .col-md-12
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group

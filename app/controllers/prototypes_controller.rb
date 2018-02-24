@@ -27,7 +27,7 @@ class PrototypesController < ApplicationController
   def update
     prototype = Prototype.find(params[:id])
     if prototype.user_id == current_user.id
-      if prototype.update(prototype_params)
+      if prototype.update(prototype_update_params)
         redirect_to :root, notice: 'Prototype was successfully updated'
       else
         redirect_to edit_prototype_path, alert: "Prototype was unsuccessfully updated"
@@ -57,6 +57,16 @@ class PrototypesController < ApplicationController
       :concept,
       :user_id,
       captured_images_attributes: [:content, :status]
+    )
+  end
+
+  def prototype_update_params
+    params.require(:prototype).permit(
+      :title,
+      :catch_copy,
+      :concept,
+      :user_id,
+      captured_images_attributes: [:id, :content, :status]
     )
   end
 end
