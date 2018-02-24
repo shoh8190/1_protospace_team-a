@@ -11,7 +11,7 @@
         .col-md-12
           %h4 Main Thumbnail
           .cover-image-upload#main_image_uploader
-            = f.fields_for :captured_images do |image|
+            = f.fields_for :captured_images, @prototype.captured_images.where(status: 0) do |image|
               -if image.object.status == 'main'
                 %img
                 = image.file_field :content, required: true
@@ -19,7 +19,7 @@
         .col-md-12
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
-            = f.fields_for :captured_images do |image|
+            = f.fields_for :captured_images, @prototype.captured_images.where(status: 1) do |image|
               -if image.object.status == 'sub'
                 %li.list-group-item.col-md-4
                   .image-upload
