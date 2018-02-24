@@ -21,16 +21,16 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @prototype.captured_images.build
+
   end
 
   def update
     prototype = Prototype.find(params[:id])
     if prototype.user_id == current_user.id
       if prototype.update(prototype_params)
-        redirect_to :root, notice: 'New prototype was successfully updated'
+        redirect_to :root, notice: 'Prototype was successfully updated'
       else
-        redirect_to edit_prototype_path, alert: "New prototype was unsuccessfully updated"
+        redirect_to edit_prototype_path, alert: "Prototype was unsuccessfully updated"
       end
     end
   end
