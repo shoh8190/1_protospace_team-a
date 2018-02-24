@@ -13,8 +13,8 @@
           .cover-image-upload#main_image_uploader
             = f.fields_for :captured_images, @prototype.captured_images.where(status: 0) do |image|
               -if image.object.status == 'main'
-                %img
                 = image.file_field :content, required: true
+                = image_tag(@prototype.set_main_thumbnail.large, id: 'main_preview')
                 = image.hidden_field :status, value: "main", id:image.object.id
         .col-md-12
           %h4 Sub Thumbnails
@@ -23,8 +23,8 @@
               -if image.object.status == 'sub'
                 %li.list-group-item.col-md-4
                   .image-upload
-                    %img
                     = image.file_field :content
+                    = image_tag(image.object.content, class: 'sub_image', id: 'sub_0_preview')
                     = image.hidden_field :status, value: "sub", id:image.object.id
       .row.proto-description
         .col-md-12
