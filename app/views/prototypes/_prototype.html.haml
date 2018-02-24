@@ -7,7 +7,7 @@
           %button{ id: 'dropdownMenu', class: 'btn btn-default dropdown-toggle', type: 'button', 'data-toggle' => 'dropdown'} ACTION
           %ul.dropdown-menu
             %li= link_to 'EDIT', "/prototypes/#{prototype.id}/edit"
-            %li= link_to 'DELETE', "#"
+            %li= link_to 'DELETE', "/prototypes/#{prototype.id}", method: :delete
     .caption
       %h3
         = prototype.title
