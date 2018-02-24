@@ -1,6 +1,13 @@
 .col-sm-4.col-md-3.proto-content
   .thumbnail
     = link_to image_tag(prototype.set_main_thumbnail), prototype_path(prototype)
+    -if user_signed_in?
+      -if prototype.user_id == current_user.id
+        .dropdown.drop_menu_location
+          %button{ id: 'dropdownMenu', class: 'btn btn-default dropdown-toggle', type: 'button', 'data-toggle' => 'dropdown'} ACTION
+          %ul.dropdown-menu
+            %li= link_to 'EDIT', "/prototypes/#{prototype.id}/edit"
+            %li= link_to 'DELETE', "#"
     .caption
       %h3
         = prototype.title
