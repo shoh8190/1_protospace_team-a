@@ -1,5 +1,5 @@
 //メインサムネイルの投稿機能
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.cover-image-upload').on('change','input[type="file"]', function(e) {
     var file = e.target.files[0],
     reader = new FileReader();
@@ -23,17 +23,8 @@ $(function() {
   });
 });
 
-$(function() {
-  $('.image-upload').on('click', function() {
-    console.log(this);
-    var id_value = $('.image-upload').attr('id');
-    console.log(id_value);
-  });
-});
-
-
 //サブのサムネイルの投稿機能
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.image-upload#0').on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0],
       reader = new FileReader();
@@ -60,7 +51,7 @@ $(function() {
   });
 });
 
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.image-upload#1').on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0],
       reader = new FileReader();
@@ -87,7 +78,7 @@ $(function() {
   });
 });
 
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.image-upload#2').on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0],
       reader = new FileReader();
