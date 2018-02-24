@@ -17,7 +17,7 @@ class PrototypesController < ApplicationController
     else
       # redirect_to ({ :action => 'new' }), :alert => 'New prototype was unsuccessfully created'
       redirect_to new_prototype_path, alert: "New prototype was unsuccessfully created"
-     end
+    end
   end
 
   def edit
