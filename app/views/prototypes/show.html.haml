@@ -37,8 +37,4 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
-
-  .row.comment-list
-    = form_for [@prototype, @comment] do |f|
-      = f.text_field :comment
-      = f.submit 'COMMENT'
+  = render partial: 'comments/form_comment'
