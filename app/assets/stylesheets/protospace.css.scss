@@ -149,6 +149,12 @@ body {
   z-index: 2;
 }
 
+.drop_menu_location{
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
 
 
 /* -- Ripple effect -------------------------------- */
@@ -430,6 +436,15 @@ body {
       filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
       cursor: pointer;
     }
+
+    #main_preview {
+      display: block;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .list-group-item {
@@ -451,6 +466,12 @@ body {
         opacity: 0;
         filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
         cursor: pointer;
+      }
+
+      .sub_image {
+        display: block;
+        width: 100%;
+        height: 100%;
       }
     }
 
