@@ -10,6 +10,7 @@ $(document).on('turbolinks:load',function() {
     reader.onload = (function(file) {
       return function(e) {
         $preview.css('background-image','none');
+        $preview.empty()
         $preview.append($('<img>').attr({
           src: e.target.result,
           class: "preview",
