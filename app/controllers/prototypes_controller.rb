@@ -24,17 +24,34 @@ class PrototypesController < ApplicationController
     @is_main_record = @prototype.captured_images.where(status: 0)
     @is_sub_record = @prototype.captured_images.where(status: 1)
     @remain_record_count = 3 - @is_sub_record.length
+    @images = @prototype.captured_images
   end
 
   def update
-    prototype = Prototype.find(params[:id])
-    if prototype.user_id == current_user.id
-      if prototype.update(prototype_update_params)
-
-        redirect_to :root, notice: 'Prototype was successfully updated'
-      else
-        redirect_to edit_prototype_path, alert: "Prototype was unsuccessfully updated"
+    flag = 0
+    prototype = prototype_update_params
+    prototype[:captured_images_attributes].each_with_index do |image_array, index|
+      image = image_array.pop
+      if image.present?
+        if image[:id].blank?
+          new_image = CapturedImage.new
+        else
+          new_image = CapturedImage.find(image[:id])
+        end
+        if image[:content].present?
+          new_image.prototype_id = params[:id]
+          new_image.status = image['status']
+          new_image.content = image['content']
+          if new_image.save!
+            flag = 1
+          end
+        end
       end
+    end
+    if flag != 1
+      redirect_to :root, notice: 'Prototype was successfully updated'
+    else
+      redirect_to edit_prototype_path, alert: "Prototype was unsuccessfully updated"
     end
   end
 
