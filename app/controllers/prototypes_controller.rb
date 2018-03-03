@@ -21,7 +21,9 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-
+    @is_main_record = @prototype.captured_images.where(status: 0)
+    @is_sub_record = @prototype.captured_images.where(status: 1)
+    @remain_record_count = 3 - @is_sub_record.length
   end
 
   def update
