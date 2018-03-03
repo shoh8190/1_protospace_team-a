@@ -30,6 +30,11 @@ class PrototypesController < ApplicationController
   def update
     flag = 0
     prototype = prototype_update_params
+    new_prototype = Prototype.find(params[:id])
+    new_prototype.title = prototype[:title]
+    new_prototype.catch_copy = prototype[:catch_copy]
+    new_prototype.concept = prototype[:concept]
+    new_prototype.save
     prototype[:captured_images_attributes].each_with_index do |image_array, index|
       image = image_array.pop
       if image.present?
@@ -42,7 +47,9 @@ class PrototypesController < ApplicationController
           new_image.prototype_id = params[:id]
           new_image.status = image['status']
           new_image.content = image['content']
-          if new_image.save!
+          if new_image.save
+            flag = flag
+          else
             flag = 1
           end
         end
