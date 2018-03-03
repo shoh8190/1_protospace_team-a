@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+= require add_sub_thumbnails.js
