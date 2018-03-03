@@ -28,15 +28,6 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    # prototype = Prototype.find(params[:id])
-    # if prototype.user_id == current_user.id
-    #   binding.pry
-      # if prototype.update(prototype_update_params)
-      #   redirect_to :root, notice: 'Prototype was successfully updated'
-      # else
-      #   redirect_to edit_prototype_path, alert: "Prototype was unsuccessfully updated"
-    #   end
-    # end
     flag = 0
     prototype = prototype_update_params
     prototype[:captured_images_attributes].each_with_index do |image_array, index|
@@ -81,6 +72,7 @@ class PrototypesController < ApplicationController
 
   def prototype_params
     params.require(:prototype).permit(
+      :id,
       :title,
       :catch_copy,
       :concept,
