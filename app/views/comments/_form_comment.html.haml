@@ -3,8 +3,8 @@
     Comments
     %span.num
       = @prototype.comments.length
-  .comment-zone#comment_area
-    .comment_list
+  .comment-zone#comment-area
+    .comment-list
       - @prototype.comments.each do |comments|
         .media
           .media-left
@@ -16,6 +16,6 @@
                 %span.anchorjs-icon
             %p
               = comments.body
-      = form_for [@prototype, @comment], html: {class: "comment-submit"} do |f|
-        = f.text_field :body
-        = f.submit 'COMMENT'
+    = form_for [@prototype, @comment], html: {class: "comment-submit"} do |f|
+      = f.text_field :body, class: "comment-input"
+      = f.submit 'COMMENT'
