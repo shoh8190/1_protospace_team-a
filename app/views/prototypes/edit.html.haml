@@ -20,7 +20,6 @@
           %ul.proto-sub-list.list-group
             - (1..3).each do |i|
               - if @images.present? && @images[i].present? && @images[i][:status] == 1
-                / - f.fields_for 'images[]', @images[i], index: images[i].id || "x#{i}" do |image|
                 = f.fields_for :captured_images, @images[i] do |image|
                   %li.list-group-item.col-md-4.appear_form
                     .image-upload.edit-sub-image{:id=>"#{i}"}
