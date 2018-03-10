@@ -10,7 +10,7 @@
       .row
         .col-md-12
           %h4 Main Thumbnail
-          .cover-image-upload#main_image_uploader
+          .cover-image-upload#main_image_uploader.edit-main-image
             = f.fields_for :captured_images, @is_main_record do |image|
               = image.file_field :content
               = image_tag(@prototype.set_main_thumbnail.large, id: 'main_preview')
@@ -18,18 +18,21 @@
         .col-md-12
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
-            = f.fields_for :captured_images, @is_sub_record do |image|
-              %li.list-group-item.col-md-4.appear_form
-                .image-upload
-                  = image.file_field :content
-                  = image_tag(image.object.content, class: 'sub_image', id: 'sub_0_preview')
-                  = image.hidden_field :status, value: "sub", id: image.object.id
-            -if @remain_record_count != 0
-              - @remain_record_count.times do |i|
+            - (1..3).each do |i|
+              - if @images.present? && @images[i].present? && @images[i][:status] == 1
+                / - f.fields_for 'images[]', @images[i], index: images[i].id || "x#{i}" do |image|
+                = f.fields_for :captured_images, @images[i] do |image|
+                  %li.list-group-item.col-md-4.appear_form
+                    .image-upload.edit-sub-image{:id=>"#{i}"}
+                      = image_tag(image.object.content, class: 'sub_image', id: "#{i}")
+                      = image.file_field :content
+                      = image.hidden_field :status, value: "sub", id: image.object.id
+              - else
                 %li.list-group-item.col-md-4.hide_form
-                  .image-upload
-                    = f.file_field :content, multiple: true, name: "prototype[captured_images_attributes][#{i + @is_sub_record.length + 1}][content]"
-                    = f.hidden_field :status, value: "sub", name: "prototype[captured_images_attributes][#{i + @is_sub_record.length + 1}][status]"
+                  .image-upload.edit-sub-image{:id=>"#{i}"}
+                    %img.sub-image{:id=>"#{i}"}
+                    = f.file_field :content, multiple: true, name: "prototype[captured_images_attributes][#{i}][content]"
+                    = f.hidden_field :status, value: "sub", name: "prototype[captured_images_attributes][#{i}][status]"
       .row.proto-description
         .col-md-12
           %h4 Catch Copy
