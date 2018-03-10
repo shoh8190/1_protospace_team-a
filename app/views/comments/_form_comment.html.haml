@@ -1,0 +1,8 @@
+.row.comment-list
+  = @prototype.comments.each do |comments|
+    %ul
+      %li
+        = comments.body
+  = form_for [@prototype, @comment] do |f|
+    = f.text_field :body
+    = f.submit 'COMMENT'

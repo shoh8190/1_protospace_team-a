@@ -2,7 +2,7 @@ class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:show ,:edit]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.all.page(params[:page]).per(8)
   end
 
   def new
@@ -15,8 +15,8 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      # redirect_to ({ :action => 'new' }), :alert => 'New prototype was unsuccessfully created'
       redirect_to new_prototype_path, alert: "New prototype was unsuccessfully created"
+      binding.pry
     end
   end
 
@@ -63,6 +63,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
   end
 
   def destroy

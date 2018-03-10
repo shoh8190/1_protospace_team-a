@@ -10,6 +10,8 @@ $(document).on('turbolinks:load',function() {
     reader.onload = (function(file) {
       return function(e) {
         $preview.css('background-image','none');
+        $preview.find('.new-image').remove();
+        console.log();
         $preview.append($('<img>').attr({
           src: e.target.result,
           class: "preview",
@@ -37,7 +39,7 @@ $(document).on('turbolinks:load',function() {
     reader.onload = (function(file) {
       return function(e) {
         $preview.css('background-image','none');
-        $preview.empty();
+        $preview.find('.sub-image#0').remove();
         $preview.append($('<img>').attr({
           src: e.target.result,
           class: "preview",
@@ -64,7 +66,6 @@ $(document).on('turbolinks:load',function() {
     reader.onload = (function(file) {
       return function(e) {
         $preview.css('background-image','none');
-        $preview.empty();
         $preview.append($('<img>').attr({
           src: e.target.result,
           class: "preview",
@@ -92,7 +93,6 @@ $(document).on('turbolinks:load',function() {
     reader.onload = (function(file) {
       return function(e) {
         $preview.css('background-image','none');
-        $preview.empty();
         $preview.append($('<img>').attr({
           src: e.target.result,
           class: "preview",
