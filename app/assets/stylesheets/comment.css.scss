@@ -8,26 +8,34 @@
     width: 100%;
     .comment-list{
       padding: 0 15px;
+      width: 100%;
       .media{
+        width: 100%;
         height: 74px;
         margin-top: 15px;
+        border-bottom: 1px solid #FF0000;
         .media-left{
           width: 74px;
           height: 74px;
-          overflow: scroll;
           padding: 0 10px 10px 0;
+          float: left;
         }
         .media-body{
-          width: calc(100% - 74px);
+          width: calc(100% - 154px);
+          float: left;
           h4{
-            a{
-              span{
-              }
-            }
+            width: 100%;
           }
           p{
             height: 19px;
           }
+        }
+        .media-action{
+          width: 80px;
+          height: 100%;
+          margin: 0;
+          list-style: none;
+          float: left;
         }
       }
     }

@@ -12,10 +12,13 @@
           .media-body
             %h4.media-heading#top-aligned-media
               = comments.user.name
-              %a.anchorjs-link{href: "#top-aligned-media"}
-                %span.anchorjs-icon
             %p
               = comments.body
+          -if user_signed_in?
+            -if comments.user_id == current_user.id
+              %ul.media-action
+                %li= link_to 'EDIT'
+                %li= link_to 'DELETE'
     = form_for [@prototype, @comment], html: {class: "comment-submit"} do |f|
       = f.text_field :body, class: "comment-input"
       = f.submit 'COMMENT'
