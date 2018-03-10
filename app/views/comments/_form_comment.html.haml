@@ -1,8 +1,9 @@
 .row.comment-list
-  = @prototype.comments.each do |comments|
+  - @prototype.comments.each do |comments|
     %ul
       %li
         = comments.body
-  = form_for [@prototype, @comment] do |f|
-    = f.text_field :body
-    = f.submit 'COMMENT'
+  - if user_signed_in?
+    = form_for [@prototype, @comment] , :html => {:class => "comment-submit"} do |f|
+      = f.text_field :body
+      = f.submit 'COMMENT'
