@@ -19,14 +19,14 @@
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
             = f.fields_for :captured_images, @is_sub_record do |image|
-              %li.list-group-item.col-md-4
+              %li.list-group-item.col-md-4.appear_form
                 .image-upload
                   = image.file_field :content
                   = image_tag(image.object.content, class: 'sub_image', id: 'sub_0_preview')
                   = image.hidden_field :status, value: "sub", id: image.object.id
             -if @remain_record_count != 0
               - @remain_record_count.times do |i|
-                %li.list-group-item.col-md-4.hide-form
+                %li.list-group-item.col-md-4.hide_form
                   .image-upload
                     = f.file_field :content, multiple: true, name: "prototype[captured_images_attributes][#{i + @is_sub_record.length + 1}][content]"
                     = f.hidden_field :status, value: "sub", name: "prototype[captured_images_attributes][#{i + @is_sub_record.length + 1}][status]"

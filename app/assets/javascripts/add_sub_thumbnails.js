@@ -1,15 +1,5 @@
 $(function(){
 
-  // $(function appendList(){
-  //   list =
-  //     `<li class="list-group-item col-md-4 add_sub_image_form">
-  //       <div class="image-upload-plus">
-  //         <span>+</span>
-  //        </div>
-  //      </li>`
-  //   return this.append(list);
-  // })
-
   list =
     `<li class="list-group-item col-md-4 add_sub_image_form">
       <div class="image-upload-plus">
@@ -17,25 +7,31 @@ $(function(){
       </div>
     </li>`;
 
- var num = $('.proto-sub-list .list-group-item').length;
+  function add_new_form(addForm, hideForm){
+    addForm.hide()
+    hideForm.show().removeClass("hide_form").addClass("appear_form").css('display', 'block');
+  };
 
- function countList(){
-  return $('.proto-sub-list .list-group-item').length;
- };
+  function countList(){
+    return $('.proto-sub-list .appear_form').length;
+  };
 
- if(num < 3){
-  $('ul.proto-sub-list').append(list);
- }
+  function appendList(){
+    if(countList() < 3){
+     $('ul.proto-sub-list').append(list);
+    };
+    console.log(countList());
+    console.log('要素を追加しました');
+  };
 
- $('.image-upload-plus').click(function(){
-  $('.add_sub_image_form').remove();
-    alert(countList());
-  if(countList < 3){
-    alert('aaa');
-  }
+  appendList();
 
- });
-
+  $(document).on('click', '.image-upload-plus', function(){
+    addForm = $('.add_sub_image_form');
+    hideForm = $('.hide_form:first');
+    add_new_form(addForm, hideForm);
+    appendList();
+  });
 
  });
 
