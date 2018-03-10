@@ -16,6 +16,6 @@
                 %span.anchorjs-icon
             %p
               = comments.body
-      = form_for [@prototype, @comment] do |f|
+      = form_for [@prototype, @comment], html: {class: "comment-list"} do |f|
         = f.text_field :body
         = f.submit 'COMMENT'
