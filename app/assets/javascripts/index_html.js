@@ -1,9 +1,9 @@
 //メインサムネイルの投稿機能
-$(document).on('turbolinks:load',function() {
-  $('.cover-image-upload').on('change','input[type="file"]', function(e) {
+$(function(){
+  $('.new-main-image').on('change','input[type="file"]', function(e) {
     var file = e.target.files[0],
     reader = new FileReader();
-    $preview = $(".cover-image-upload");
+    $preview = $(".new-main-image");
     if (file.type.indexOf("image") < 0) {
       return false
     }
@@ -11,7 +11,6 @@ $(document).on('turbolinks:load',function() {
       return function(e) {
         $preview.css('background-image','none');
         $preview.find('.new-image').remove();
-        console.log();
         $preview.append($('<img>').attr({
           src: e.target.result,
           class: "preview",
@@ -26,11 +25,11 @@ $(document).on('turbolinks:load',function() {
 });
 
 //サブのサムネイルの投稿機能
-$(document).on('turbolinks:load',function() {
-  $('.image-upload#0').on('change', 'input[type="file"]', function(e) {
+$(function(){
+  $('.new-sub-image#0').on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0],
       reader = new FileReader();
-    $preview = $(".image-upload#0");
+    $preview = $(".new-sub-image#0");
     t = this;
     if (file.type.indexOf("image") < 0) {
       return false
@@ -53,7 +52,7 @@ $(document).on('turbolinks:load',function() {
   });
 });
 
-$(document).on('turbolinks:load',function() {
+$(function(){
   $('.image-upload#1').on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0],
       reader = new FileReader();
@@ -79,7 +78,7 @@ $(document).on('turbolinks:load',function() {
   });
 });
 
-$(document).on('turbolinks:load',function() {
+$(function(){
   $('.image-upload#2').on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0],
       reader = new FileReader();
