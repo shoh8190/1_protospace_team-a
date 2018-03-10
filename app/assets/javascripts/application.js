@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require add_sub_thumbnails.js
 //= require_tree .
-= require add_sub_thumbnails.js
+
