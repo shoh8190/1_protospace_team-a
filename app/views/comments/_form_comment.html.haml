@@ -1,8 +1,19 @@
-.row.comment-list
-  = @prototype.comments.each do |comments|
-    %ul
-      %li
-        = comments.body
-  = form_for [@prototype, @comment] do |f|
-    = f.text_field :body
-    = f.submit 'COMMENT'
+.row.proto-description
+  %h4.comments-total
+    Comments
+    %span.num= comments.count
+  .comment-zone#comment_area
+    .comment_list
+      - @prototype.comments.each do |comments|
+        .media
+          .media-left
+          .media-body
+            %h4.media-heading#top-aligned-media
+              = comments.user.name
+              %a.anchorjs-link{href: "#top-aligned-media"}
+                %span.anchorjs-icon
+            %p
+              = comments.body
+      = form_for [@prototype, @comment] do |f|
+        = f.text_field :body
+        = f.submit 'COMMENT'
