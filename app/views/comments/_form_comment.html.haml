@@ -1,12 +1,14 @@
 .row.proto-description
   %h4.comments-total
     Comments
-    %span.num= comments.count
+    %span.num
+      = @prototype.comments.length
   .comment-zone#comment_area
     .comment_list
       - @prototype.comments.each do |comments|
         .media
           .media-left
+            = comments.user.avatar
           .media-body
             %h4.media-heading#top-aligned-media
               = comments.user.name
