@@ -12,6 +12,21 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.user_id = current_user.id
+      @comment.destroy
+      render json: @comment
+    end
+
+  end
+
   private
 
   def comment_params

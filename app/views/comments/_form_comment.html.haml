@@ -6,7 +6,7 @@
   .comment-zone#comment-area
     .comment-list
       - @prototype.comments.each do |comments|
-        .media
+        .media{data: {comments_id: comments.id}}
           .media-left
             = comments.user.avatar
           .media-body
@@ -17,8 +17,8 @@
           -if user_signed_in?
             -if comments.user_id == current_user.id
               %ul.media-action
-                %li= link_to 'EDIT'
-                %li= link_to 'DELETE'
+                %li.media-action-edit= link_to 'EDIT'
+                %li.media-action-delete= link_to 'DELETE'
     = form_for [@prototype, @comment], html: {class: "comment-submit"} do |f|
-      = f.text_field :body, class: "comment-input"
+      = f.text_area :body, class: "comment-input"
       = f.submit 'COMMENT'
