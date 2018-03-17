@@ -1,14 +1,14 @@
 $(function(){
 
   list =
-    `<li class="list-group-item col-md-4 add_sub_image_form">
-      <div class="image-upload-plus">
-        <span style=''>+</span>
-      </div>
-    </li>`;
+    '<li class="list-group-item col-md-4 add_sub_image_form">'
+    + '<div class="image-upload-plus">'
+    +   '<span style="">+</span>'
+    + '</div>'
+    +'</li>';
 
   function add_new_form(addForm, hideForm){
-    addForm.hide()
+    addForm.remove()
     hideForm.show().removeClass("hide_form").addClass("appear_form").css('display', 'block');
   };
 
@@ -17,11 +17,9 @@ $(function(){
   };
 
   function appendList(){
-    if(countList() < 3){
+    if(countList() < 3 && $('.hide_form').length){
      $('ul.proto-sub-list').append(list);
     };
-    console.log(countList());
-    console.log('要素を追加しました');
   };
 
   appendList();
