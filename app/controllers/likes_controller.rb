@@ -1,15 +1,14 @@
 class LikesController < ApplicationController
   def create
-    @user = current_user.id
-    @prototype = params[:prototype_id]
-    likes = { user_id: @user, prototype_id: @prototype }
-    @like = Like.new(likes)
+    @like = like.create(user_id: current_user.id, prototype_id: params[:prototype_id])
+    @likes = like.where
+    @prototypes = Prototype.all
+  end
 
-    @like.save!
-    if @like.save
-      redirect_to user_path(@user)
-    else
-      redirect_to prototype_path
-    end
+  def destroy
+    like = like.find_by(user_id: current_user.id, prototype_id: params[:prototype_id])
+    like.destroy
+    @like = Like.where(prototype_id: params[:prototype_id])
+    @prototypes = Prototype.all
   end
 end
