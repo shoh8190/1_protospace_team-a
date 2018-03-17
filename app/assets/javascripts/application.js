@@ -11,9 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require bootstrap
-//= require add_sub_thumbnails.js
-//= require show_preview.js
 //= require_tree .
 
