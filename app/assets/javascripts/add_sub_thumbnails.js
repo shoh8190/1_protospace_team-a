@@ -3,7 +3,7 @@ $(function(){
   list =
     '<li class="list-group-item col-md-4 add_sub_image_form">'
     + '<div class="image-upload-plus">'
-    +   '<span style=''>+</span>'
+    +   '<span style="">+</span>'
     + '</div>'
     +'</li>';
 
