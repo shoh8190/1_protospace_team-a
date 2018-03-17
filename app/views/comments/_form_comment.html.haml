@@ -8,7 +8,7 @@
       - @prototype.comments.each do |comments|
         .media{data: {comments_id: comments.id}}
           .media-left
-            = comments.user.avatar
+            = image_tag(comments.user.avatar.thumb, alt: "profile_photo")
           .media-body
             %h4.media-heading#top-aligned-media
               = comments.user.name
