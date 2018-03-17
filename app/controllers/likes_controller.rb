@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
   def create
-    @like = like.create(user_id: current_user.id, prototype_id: params[:prototype_id])
-    @likes = like.where
+    @like = Like.create(user_id: current_user.id, prototype_id: params[:prototype_id])
+    @likes = Like.where(tweet_id: params[:tweet_id])
     @prototypes = Prototype.all
   end
 

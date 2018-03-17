@@ -14,7 +14,7 @@
             .degree
               = @prototype.user.position
     .col-md-6.clearfix
-      = render partial: 'prototypes/like', locals: {prototype: @prototype}
+      = render partial: 'prototypes/like', locals: {prototype: @prototype, likes: @likes, like: @like}
       / .likes_box
       /   %button#like-button.btn.btn-default.decrement-button
       /     = image_tag("icon_heart.svg" ,class: "heart" )
