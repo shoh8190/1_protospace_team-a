@@ -13,7 +13,7 @@ module Miuraspace
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.default_locale = :ja
-    config.assets.initialize_on_precompile = false
+    # config.assets.initialize_on_precompile = false
     config.generators do |g|
       g.test_framework       false
       g.helper               false
