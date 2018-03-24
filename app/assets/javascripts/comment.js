@@ -1,7 +1,9 @@
 $(function(){
   var commentList = $(".comment-list");
   function appendComment(comment){
-    var html = '<div class="media" data-comments-id="' + ${comment.id} + '">'
+    var html = '<div class="media" data-comments-id='
+             +  comment.id
+             +  '>'
              +   '<div class="media-left">/uploads/noimage.png</div>'
              +     '<div class="media-body">'
              +      '<h4 class="media-heading" id="top-aligned-media">'
@@ -10,14 +12,22 @@ $(function(){
              +      '</h4><p>'
              +       comment.body
              +   '</div>'
-             +   '<div>'
-             +    '<ul class="media-action">'
-             +      '<li class="media-action-edit"><a href="">EDIT</a></li>'
-             +      '<li class="media-action-delete"><a href="">DELETE</a></li>'
-             +    '</ul>'
-             +   '</div>'
+             +   '<ul class="media-action">'
+             +     '<li class="media-action-edit">EDIT</li>'
+             +     '<li class="media-action-delete">DELETE</li>'
+             +   '</ul>'
              + '</div>'
     commentList.append(html);
+  }
+  function editComment(text){
+    var html = '<form class="comment-submit" id="new_comment" action="/prototypes/3/comments" accept-charset="UTF-8" method="post">'
+             +    '<input name="utf8" type="hidden" value="✓">'
+             +    '<textarea class="comment-input" name="comment[body]" id="comment_body">'
+             +      text
+             +    '</textarea>'
+             +    '<input type="submit" name="commit" value="COMMENT">'
+               '</form>'
+    return html
   }
 
   $(".comment-submit").on("submit",function(e){
@@ -43,7 +53,7 @@ $(function(){
 
 
   //deleteが押された時のイベント
-  $(".media-action-delete").on("click",function(e){
+  $(".comment-list").on("click",".media-action-delete",function(e){
     //aタグクリック時の遷移をキャンセル
     e.preventDefault();
     var deleteComment = $(this);
@@ -63,6 +73,35 @@ $(function(){
     })
     .fail(function(){
       alert("コメントの削除に失敗しました。");
+    })
+  })
+
+  //editが押された時のイベント
+  $(".comment-list").on("click",".media-action-edit",function(e){
+    e.preventDefault();
+    var text = $(this).parent().prev().children("p").text();
+    var commentId = $(this).parent().parent().data("comments-id");
+    $(this).parent().prev().children("p").html(editComment(text));
+    $(this).parent().remove();
+
+    $(".comment-list").on("submit",".comment-submit",function(e){
+      e.preventDefault();
+      var formData = new FormData(this);
+      var href = window.location.href + '/comments/' + commentId;
+      $.ajax({
+        type: "PATCH",
+        url: href,
+        data: formData,
+        dataType: "json",
+        processData: false,
+        contentType: false
+      })
+      .done(function(data){
+        console.log(data);
+      })
+      .fail(function(){
+        console.log("失敗しました");
+      })
     })
   })
 })

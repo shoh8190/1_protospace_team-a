@@ -17,8 +17,10 @@
           -if user_signed_in?
             -if comments.user_id == current_user.id
               %ul.media-action
-                %li.media-action-edit= link_to 'EDIT'
-                %li.media-action-delete= link_to 'DELETE'
+                %li.media-action-edit
+                  EDIT
+                %li.media-action-delete
+                  DELETE
     = form_for [@prototype, @comment], html: {class: "comment-submit"} do |f|
       = f.text_area :body, class: "comment-input"
       = f.submit 'COMMENT'

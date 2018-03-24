@@ -13,9 +13,16 @@ class CommentsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
+    comment = Comment.find(params[:id])
+    comment.update(comment_params)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def destroy
