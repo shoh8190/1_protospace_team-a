@@ -14,6 +14,16 @@ $(function(){
     commentList.append(html);
   }
 
+  function addCommentCount(){
+    cnum = parseInt($(".comments-total span").text()) + 1
+    $(".comments-total span").html(cnum);
+  }
+
+  function deleteCommentCount(){
+    cnum = parseInt($(".comments-total span").text()) - 1
+    $(".comments-total span").html(cnum);
+  }
+
   $(".comment-submit").on("submit",function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -29,6 +39,7 @@ $(function(){
     .done(function(data){
       appendComment(data);
       $(".comment-input").val("");
+      addCommentCount();
     })
     .fail(function(){
       console.log("失敗しました");
@@ -53,6 +64,7 @@ $(function(){
     .done(function(comment){
       //.media-action-deleteの親の親要素を削除
       $(deleteComment).parent().parent().remove();
+      deleteCommentCount()
       alert("コメントを削除しました。");
     })
     .fail(function(){
