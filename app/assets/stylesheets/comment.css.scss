@@ -13,15 +13,21 @@
         width: 100%;
         height: 74px;
         margin-top: 15px;
-        border-bottom: 1px solid #FF0000;
+        border-bottom: 1px solid #EEEEEE;
         .media-left{
           width: 74px;
           height: 74px;
-          padding: 0 10px 10px 0;
+          padding: 0 0px 10px 0;
+          margin-right: 10px;
           float: left;
+          img{
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+          }
         }
         .media-body{
-          width: calc(100% - 154px);
+          width: calc(100% - 210px);
           float: left;
           h4{
             width: 100%;
@@ -40,4 +46,53 @@
       }
     }
   }
+}
+
+.media-action-bottun,
+.media-action-bottun:hover,
+.media-action-bottun:visited,
+{
+  display: block;
+  height: 26px;
+  width: 84px;
+  vertical-align: middle;
+  padding-left:1px;
+  margin-top: 6px;
+  text-decoration: none;
+  line-height: 26px;
+  text-align: center;
+  color: #7d8383;
+  text-shadow: 0px 1px 0px #fafafa;
+  background: #fbfaf4;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fbfaf4), to(#ece8e6));
+  background: -moz-linear-gradient(top,  #fbfaf4,  #ece8e6);
+  background: -o-linear-gradient(top,  #fbfaf4,  #ece8e6);
+  background: -ms-linear-gradient(top,  #fbfaf4,  #ece8e6);
+  background: linear-gradient(top,  #fbfaf4,  #ece8e6);
+  border: 1px solid #dcd9d8;
+  border-bottom: 1px solid #c1c1bd;
+  -webkit-box-shadow:  0 0 1px #c7c5c1;
+  -moz-box-shadow:  0 0 1px #c7c5c1;
+  box-shadow:  0 0 1px #c7c5c1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.media-action-delete:hover,
+.media-action-edit:hover { /*マウスホバー時*/
+  color:#9a9f9f;
+  background: #fbfbf9;
+}
+
+.media-action-delete:active,
+.media-action-edit:active{  /* ボタンを押したとき */
+  background:#ece8e4;
+  border: none;
+  box-shadow:  0 1px 1px #cccbc9, inset 0 0 1px rgba(0, 0, 0, 0.3);
 }
