@@ -17,11 +17,11 @@ class CommentsController < ApplicationController
   end
 
   def update
-    comment = Comment.find(params[:id])
-    comment.update(comment_params)
+    @comment = Comment.find(params[:id])
+    @comment = @comment.update(comment_params)
     respond_to do |format|
       format.html
-      format.json
+      format.json { @comment }
     end
   end
 
