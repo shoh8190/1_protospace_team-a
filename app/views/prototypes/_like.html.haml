@@ -12,7 +12,8 @@
       %span#like-sum.num
         = prototype.likes_count
 - else
-  = image_tag("icon_heart.svg" ,class: "heart" )
-  LIKE
-  %span#like-sum.num
-    = prototype.likes_count
+  = button_to new_user_session_path, id: "like-button", class: "btn btn-default" do
+    = image_tag("icon_heart.svg" ,class: "heart" )
+    LIKE
+    %span#like-sum.num
+      = prototype.likes_count
