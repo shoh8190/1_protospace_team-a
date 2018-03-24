@@ -16,3 +16,4 @@
 //= require add_sub_thumbnails.js
 //= require show_preview.js
 //= require_tree .
+//= require jquery.pjax

@@ -17,6 +17,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'pjax_rails'
 
 group :development, :test do
   gem 'byebug'
