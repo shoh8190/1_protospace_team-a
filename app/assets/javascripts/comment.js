@@ -1,7 +1,7 @@
 $(function(){
   var commentList = $(".comment-list");
   function appendComment(comment){
-    var html = '<div class="media">'
+    var html = '<div class="media" data-comments-id="' + ${comment.id} + '">'
              +   '<div class="media-left">/uploads/noimage.png</div>'
              +     '<div class="media-body">'
              +      '<h4 class="media-heading" id="top-aligned-media">'
@@ -9,6 +9,12 @@ $(function(){
              +      '<a class="anchorjs-link" href="#top-aligned-media"><span class="anchorjs-icon"></span></a>'
              +      '</h4><p>'
              +       comment.body
+             +   '</div>'
+             +   '<div>'
+             +    '<ul class="media-action">'
+             +      '<li class="media-action-edit"><a href="">EDIT</a></li>'
+             +      '<li class="media-action-delete"><a href="">DELETE</a></li>'
+             +    '</ul>'
              +   '</div>'
              + '</div>'
     commentList.append(html);
